@@ -1,0 +1,152 @@
+#main.py
+#Jesse Elliott | Main Text Based Game
+#This code will run the text based game for the player to pick their route
+
+import sys
+import random
+from place import Place #Brings in the place class
+from body import body, weapon #Brings in body and weapon variables
+
+a = Place("Enterence") #labals each of the rooms
+b = Place("Ballroom")
+c = Place("Bedroom")
+d = Place("Kitchen")
+e = Place("Hallway")
+f = Place("Freezer")
+k = a #very important variable down the line
+
+places = random.choice(body)
+weapons = random.choice(weapon)
+
+j = input("Which character will you chose? Mr. Knight, Mr. Body or Mr. Gus? ")
+
+run = True #continuasly acts for the player for them to play
+while run:
+    if j == "Mr. Knight":
+        print("Mr. Knight")
+    elif j == "Mr. Body":
+        print("Mr. Body")
+    elif j == "Mr. Gus":
+        print("Mr. Gus")
+    else:
+        print("Thats not a character")
+        j = input("Which character will you chose? Mr. Knight, Mr. Body or Mr. Gus? ")
+     
+    k.printroom() #prints room that player is in
+    print("You can go in any direction(type up, down, left or right), or search the place by typing 'search.' Or type 'quit' to quit.  ")
+    l = input("What would you like to do?   ") #asks the player which way they want to go
+    if l == 'up': #controls upward movement
+        if k == a:
+            k = b
+        elif k == b:
+            print("you can't go that way")
+        elif k == c:
+            k = e
+        elif k == d:
+            k = f
+        elif k == e:
+            print("you can't go that way")
+        elif k == f:
+            print("you can't go that way")
+    elif l == 'left': #controls sideways movement to the left
+        if k == a:
+            k = c
+        elif k == b:
+            k = e
+        elif k == c:
+            print("you can't go that way")
+        elif k == d:
+            k = b
+        elif k == e:
+            print("you can't go that way")
+        elif k == f:
+            print("you can't go that way")
+    elif l == 'right':#controls sideways movement to the right
+        if k == a:
+            print("you can't go that way")
+        elif k == b:
+            k = d
+        elif k == c:
+            k = a
+        elif k == d:
+            print("you can't go that way")
+        elif k == e:
+            k = b
+        elif k == f:
+            print("you can't go that way")
+    elif l == 'down': #controls downward movement
+        if k == a:
+            print("you can't go that way")
+        elif k == b:
+            k = a
+        elif k == c:
+            print("you can't go that way")
+        elif k == d:
+            print("you can't go that way")
+        elif k == e:
+            k = c
+        elif k == f:
+            k = d
+    elif l == 'search': # controls the searching in the room
+        if k == a:
+            print("There is nothing here")
+            
+        elif k == b:
+            if places == "b":
+                print("You found the body")
+            else:
+                print("The body isn't here")
+                
+            if weapons == "b":
+                print("You found the weapon")
+            else:
+                print("The weapon isn't here")
+                
+        elif k == c:
+            if places == "c":
+                print("You found the body")
+            else:
+                print("The body isn't here")
+            
+            if weapons == "c":
+                print("You found the weapon")
+            else:
+                print("The weapon isn't here")
+                
+        elif k == d:
+            if places == "d":
+                print("You found the body")
+            else:
+                print("The body isn't here")
+            
+            if weapons == "d":
+                print("You found the weapon")
+            else:
+                print("The weapon isn't here")
+                
+        elif k == e:
+            if places == "e":
+                print("You found the body")
+            else:
+                print("The body isn't here")
+            
+            if weapons == "e":
+                print("You found the weapon")
+            else:
+                print("The weapon isn't here")
+                
+        elif k == f:
+            if places == "f":
+                print("You found the body")
+            else:
+                print("The body isn't here")
+            
+            if weapons == "f":
+                print("You found the weapon")
+            else:
+                print("The weapon isn't here")
+    if l == "quit":
+        sys.exit()
+                
+    else: #makes sure that the player does an actual input
+        print("that's not an input")
